@@ -11,23 +11,7 @@ else
   :
 fi
 echo "Starting"
-echo "Copy DNS info"
-cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
-echo "Copy Done"
-echo "Mounting"
-mount --types proc /proc /mnt/gentoo/proc
-mount --rbind /sys /mnt/gentoo/sys
-mount --make-rslave /mnt/gentoo/sys
-mount --rbind /dev /mnt/gentoo/dev
-mount --make-rslave /mnt/gentoo/dev
-mount --bind /run /mnt/gentoo/run
-mount --make-slave /mnt/gentoo/run
-echo "Mounting Done"
-echo "Chrooting in"
-chroot /mnt/gentoo /bin/bash
-source /etc/profile
-export PS1="(chroot) ${PS1}"
-echo "Chrooting Done"
+emerge-webrsync
 echo "Creating make.conf"
 git clone https://github.com/HenL188/gentoo-make.conf.git
 rm /etc/portage/make.conf
