@@ -1,5 +1,4 @@
 #! /bin/bash
-
 echo "Wellcome to the gentoo install speed up"
 echo "Would you like to contine"
 read -p "Y/N: " input
@@ -70,12 +69,28 @@ rc-service dhcpcd start
 echo "Done setting up network"
 echo "Set root password"
 passwd
+read -p "Create User (Y/N): " user
+if [[ "$user" = "Y" || "$user" = "y" ]]; then
+  read -p "Username: " username
+  useradd -m -G wheel -s /bin/bash $username
+  echo "Enter password for user"
+  passwd $username
+else
+  :
+fi
 echo "Installing grub"
 emerge --ask --verbose sys-boot/grub
 grub-install --efi-directory=/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 echo "Done installing grub"
+echo "Installing useful tools"
+emerge --ask app-shells/bash-completion
+emerge --ask net-misc/chrony
+rc-update add chronyd default
+emerge --ask net-misc/dhcpcd
+echo "Done installing tools"
 echo "Installation completed"
+rm /stage3-*.tar.*
 echo "Rebooting"
 exit
 cd
