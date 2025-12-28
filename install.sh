@@ -2,32 +2,26 @@
 echo "Wellcome to the gentoo install speed up"
 echo "Would you like to contine"
 read -p "Y/N: " input
-
 if [[ "$input" = "N" || "$input" = "n" ]]; then
   echo "Exiting"
   exit 1
 else
   :
 fi
-echo "Starting"
-emerge-webrsync
 echo "Creating make.conf"
 git clone https://github.com/HenL188/gentoo-make.conf.git
 rm /etc/portage/make.conf
-mv make.conf /etc/portage/
-getuto
+mv ./gentoo-make.conf/make.conf /etc/portage/
 echo "make.conf completed"
-echo "Preparing for a bootloader"
-mount /dev/sda1 /efi
-echo "Preparing Done"
-echo "rsync portage"
-emerge-webrsync
+echo "Running Getuto"
+getuto
 echo "Would you like to select a profile"
 read -p "Y/N: " pro
 if [[ "$pro" = "Y" || "$pro" = "y" ]]; then
-  eselect profile | less
+  eselect profile list | less
   read -p "Option: " option
   eselect profile set $option
+  echo "eselect profile set $option"
 else
   :
 fi
