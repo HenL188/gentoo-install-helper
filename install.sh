@@ -29,7 +29,7 @@ source /etc/profile
 export PS1="(chroot) ${PS1}"
 echo "Chrooting Done"
 echo "Creating make.conf"
-git clone link
+git clone https://github.com/HenL188/gentoo-make.conf.git
 rm /etc/portage/make.conf
 mv make.conf /etc/portage/
 getuto
