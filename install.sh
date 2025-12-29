@@ -1,5 +1,5 @@
 #! /bin/bash
-echo "Wellcome to the gentoo install speed up"
+echo "Welcome to the gentoo install speed up"
 echo "Would you like to contine"
 read -p "Y/N: " input
 if [[ "$input" = "N" || "$input" = "n" ]]; then
@@ -8,16 +8,10 @@ if [[ "$input" = "N" || "$input" = "n" ]]; then
 else
   :
 fi
-echo "Would you like to select a profile"
-read -p "Y/N: " pro
-if [[ "$pro" = "Y" || "$pro" = "y" ]]; then
-  eselect profile list | less
-  read -p "Option: " option
-  eselect profile set $option
-  echo "eselect profile set $option"
-else
-  :
-fi
+eselect profile list | less
+read -p "Profile Option: " option
+eselect profile set $option
+echo "eselect profile set $option"
 echo "Creating make.conf"
 git clone https://github.com/HenL188/gentoo-make.conf.git
 rm /etc/portage/make.conf
