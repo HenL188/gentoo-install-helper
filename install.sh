@@ -8,13 +8,6 @@ if [[ "$input" = "N" || "$input" = "n" ]]; then
 else
   :
 fi
-echo "Creating make.conf"
-git clone https://github.com/HenL188/gentoo-make.conf.git
-rm /etc/portage/make.conf
-mv ./gentoo-make.conf/make.conf /etc/portage/
-echo "make.conf completed"
-echo "Running Getuto"
-getuto
 echo "Would you like to select a profile"
 read -p "Y/N: " pro
 if [[ "$pro" = "Y" || "$pro" = "y" ]]; then
@@ -25,6 +18,13 @@ if [[ "$pro" = "Y" || "$pro" = "y" ]]; then
 else
   :
 fi
+echo "Creating make.conf"
+git clone https://github.com/HenL188/gentoo-make.conf.git
+rm /etc/portage/make.conf
+mv ./gentoo-make.conf/make.conf /etc/portage/
+echo "make.conf completed"
+echo "Running Getuto"
+getuto
 echo "Creating cpu and video card use flags"
 emerge --ask --oneshot app-portage/cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
