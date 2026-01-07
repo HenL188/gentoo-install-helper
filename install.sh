@@ -79,9 +79,5 @@ emerge --ask net-misc/dhcpcd
 echo "Done installing tools"
 echo "Installation completed"
 rm /stage3-*.tar.*
-echo "Rebooting"
-exit
-cd
-umount -l /mnt/gentoo/dev{/shm,/pts,}
-umount -R /mnt/gentoo
+echo "Exit chroot and run post-insatll.sh to continue"
 reboot
