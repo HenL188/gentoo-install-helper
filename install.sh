@@ -80,4 +80,3 @@ echo "Done installing tools"
 echo "Installation completed"
 rm /stage3-*.tar.*
 echo "Exit chroot and run post-insatll.sh to continue"
-reboot
