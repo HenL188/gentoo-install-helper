@@ -20,7 +20,7 @@ echo "make.conf completed"
 echo "Running Getuto"
 getuto
 echo "Creating cpu and video card use flags"
-emerge  --oneshot app-portage/cpuid2cpuflags
+emerge --oneshot app-portage/cpuid2cpuflags
 echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
 echo "*/* VIDEO_CARDS: amdgpu radeonsi" > /etc/portage/package.use/00video_cards
 echo "Done with cpu and video flags"
