@@ -1,9 +1,8 @@
-emerge --ask --deepclean dev-vcs/git
-emerge --deepclean app-portage/cpuid2cpuflags
-emerge --ask dev-vcs/git
-emerge --ask sys-apps/systemd-utils
-emerge --ask sys-auth/elogind
-emerge --ask dev-lang/go
-emerge --ask dev-lang/zig
-emerge --ask dev-lang/zig-bin
-emerge --ask app-misc/neofetch
+emerge --depclean dev-vcs/git
+emerge --depclean app-portage/cpuid2cpuflags
+emerge  dev-vcs/git
+emerge  sys-apps/systemd-utils
+emerge  sys-auth/elogind
+emerge  dev-lang/go
+emerge  dev-lang/zig-bin
+emerge  app-misc/neofetch
