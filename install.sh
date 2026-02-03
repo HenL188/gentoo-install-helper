@@ -1,8 +1,11 @@
 #! /bin/bash
 echo "Welcome to the gentoo install speed up"
 read -s -p "Host: " hostname
+echo
 read -s -p "Root passward: " root_password
+echo
 read -s -p "User: " username
+echo
 read -s -p "User passward: " user_password
 
 eselect profile list | less
@@ -63,6 +66,7 @@ rc-service dhcpcd start
 echo "Done setting up network"
 
 echo "root:$root_password" | chpasswd
+useradd -m -G wheel -s /bin/bash "$username"
 echo "$username:$user_password" | chpasswd
 
 echo "Installing grub"
