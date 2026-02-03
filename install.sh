@@ -1,10 +1,10 @@
 #! /bin/bash
 echo "Welcome to the gentoo install speed up"
-read -s -p "Host: " hostname
+read -p "Host: " hostname
 echo
 read -s -p "Root passward: " root_password
 echo
-read -s -p "User: " username
+read -p "User: " username
 echo
 read -s -p "User passward: " user_password
 
